@@ -4,14 +4,29 @@
 
 - [Demo](http://tshi0912.github.io/city-picker)
 
-##Release History
 
-###v1.1.0
-Add function to get the code：
+## 使用示例
 
-```javascript
-// type: null or undefined(get the full code path, separated with /), province, city, district
-$('.city-picker').data('citypicker').getCode(type);
+```html
+<link rel="stylesheet" href="/css/city-picker.css">
+
+<div style="position:relative;"><!-- container -->
+  <input readonly type="text" class="city-picker" placeholder="请选择省/市" data-level="city">
+</div>
+
+<script src="/path/to/jquery.js"></script><!-- jQuery is required -->
+<script src="/path/to/city-picker.data.js"></script>
+<script src="/path/to/city-picker.js"></script>
+
+<script>
+  $('input.city-picker').on('cp:updated',function(){ 
+    var cityCode = $(this).data('citypicker').getCode('city'); // province, city, district
+    if(cityCode != undefined) {
+      // @todo 发送 code 到服务器
+      console.log(cityCode);
+    }
+  });
+</script>
 ```
 
 ## Main
@@ -24,8 +39,6 @@ dist/
 └── city-picker.data.min.js (68 KB)
 ```
 
-
-
 ## Getting started
 
 
@@ -37,28 +50,6 @@ Four quick start options are available:
 - Clone the repository: `git clone https://github.com/tshi0912/city-picker.git`.
 - Install with [NPM](http://npmjs.org): `npm install city-picker`.
 - Install with [Bower](http://bower.io): `bower install city-picker`.
-
-
-### Installation
-
-Include files:
-
-```html
-<script src="/path/to/jquery.js"></script><!-- jQuery is required -->
-<script src="/path/to/city-picker.data.js"></script>
-<script src="/path/to/city-picker.js"></script>
-```
-
-
-Create HTML elements:
-
-```html
-<div style="position:relative;"><!-- container -->
-  <input readonly type="text">
-</div>
-```
-
-
 
 ### Usage
 
